@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test
+  namespace: default
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/OssamaTammam/argocd-practice
+    targetRevision: master
+    path: helm/test
+    valuesFiles:
+      - values.yaml
+  destination:
+    name: "in-cluster"
+    namespace: test
